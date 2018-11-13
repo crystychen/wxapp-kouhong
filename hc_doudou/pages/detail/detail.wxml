@@ -1,0 +1,13 @@
+<swiper class="nav" style="width:{{screenWidth}}px;height:{{screenWidth}}px">
+    <swiper-item class="item">
+        <image bindtap="previewImage" class="img" data-img="{{detail.thumb}}" src="{{detail.thumb}}" style="width:{{screenWidth}}px;height:{{screenWidth}}px"></image>
+    </swiper-item>
+</swiper>
+<view class="goods">
+    <view class="between" wx:if="{{system!='iOS'}}">
+        <view class="price">￥{{detail.price}}</view>
+    </view>
+    <view class="goodsname">{{detail.title}}</view>
+</view>
+<view class="line"></view>
+<view class="buy">喜欢此商品请到店购买</view>

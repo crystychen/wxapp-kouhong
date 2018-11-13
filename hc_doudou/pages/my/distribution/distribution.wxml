@@ -1,0 +1,45 @@
+<scroll-view scrollX class="orderstatus" wx:if="{{level>1}}">
+    <view bindtap="click" class="item {{index==selindex&&orderstatus.length>1?'sel':''}} width{{level}}" data-index="{{index}}" wx:if="{{index<level}}" wx:for="{{orderstatus}}" wx:key="index">{{item}} ({{CommissionCount['level'+(index+1)]}})</view>
+</scroll-view>
+<view style="{{level>1?'margin-top:100rpx;':''}}">
+    <view class="distribution" wx:if="{{Teamlist.length>=0}}" wx:for="{{Teamlist}}" wx:key="index">
+        <view class="between">
+            <view class="flex row">
+                <image src="{{item.avatar}}"></image>
+                <view>{{item.nickname}}</view>
+            </view>
+            <view style="color:#BEBEBE;font-size:24rpx;">
+          {{item.createtime}}
+        </view>
+        </view>
+        <view class="detail between">
+            <view class="columns" style="width:100%">
+                <view class="title">{{item.goodsname}}</view>
+                <view class="rate  row flex">
+                    <view class="rates">
+                        <view>付款金额</view>
+                        <view class="ratenum">￥{{item.price}}</view>
+                    </view>
+                    <view class="mark">
+                        <view>×</view>
+                    </view>
+                    <view class="rates">
+                        <view>佣金比例</view>
+                        <view class="ratenum">{{item.rate}}%</view>
+                    </view>
+                    <view class="mark">
+                        <view>=</view>
+                    </view>
+                    <view class="rates">
+                        <view>佣金金额</view>
+                        <view class="ratenum">￥{{item.profit}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="ordernum">订单号：
+        <text style="color:#57A2FF;">{{item.trade_no}}</text>
+        </view>
+    </view>
+    <view style="width:100%;font-size:28rpx;color:#8e8e8e;text-align:center;" wx:if="{{CommissionCount['level'+(selindex+1)]==0}}">---没有数据---</view>
+</view>

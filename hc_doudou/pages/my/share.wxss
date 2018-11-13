@@ -1,0 +1,21 @@
+image {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.btn {
+    position: fixed;
+    bottom: 100rpx;
+    width: 60%;
+    left: 50%;
+    margin-left: -30%;
+    background: #fd1853;
+    color: #fff;
+    border-radius: 20rpx;
+    font-size: 30rpx;
+}
+
+button:after {
+    border: none;
+}

@@ -1,0 +1,69 @@
+<view class="top {{shadow?'':'blur'}}" style="background:url({{sys.basic.back}}) no-repeat;width:100%;background-size:100% 100%;height:300rpx;">
+    <view class="music between">
+        <view></view>
+        <image bindtap="closevoice" data-voice="{{sys.basic.bgm}}" src="{{closeV?'../../resource/images/voice.png':'../../resource/images/closevoice.png'}}"></image>
+    </view>
+    <audio loop id="myAudio"></audio>
+    <image class="tips" mode="widthFix" src="{{sys.basic.icon}}"></image>
+    <view class="game between">
+        <view>{{sys.basic.cgtitle}}</view>
+        <view bindtap="level">闯关购说明</view>
+    </view>
+    <view class="goods">
+        <button bindgetuserinfo="getUserInfo" bindtap="{{login?'detail':''}}" class="item" data-id="{{item.id}}" data-need="{{item.price}}" hoverClass="none" lang="zh_CN" openType="{{login?'':'getUserInfo'}}" wx:for="{{goods}}" wx:key="index">
+            <view class="detail">
+                <image src="{{item.thumb}}" style="width:{{screenWidth*0.3}}px;height:{{screenWidth*0.3}}px"></image>
+                <view class="price" wx:if="{{system!='iOS'||sys.pay.ios==0}}">专柜价￥{{item.storeprice}}</view>
+                <view class="title">{{item.title}}</view>
+                <view class="model">{{item.model}}</view>
+            </view>
+            <view class="btn" wx:if="{{system!='iOS'||sys.pay.ios==0}}">{{item.price}}元闯关购</view>
+        </button>
+    </view>
+    <button bindgetuserinfo="getUserInfo" bindtap="{{login?'play':''}}" class="tryBtn" hoverClass="none" lang="zh_CN" openType="{{login?'':'getUserInfo'}}">
+        <image class="try" src="../../resource/images/try.png"></image>
+    </button>
+    <view class="footer flex">
+        <button class="tabbar column" hoverClass="none">
+            <image src="{{sys.icon.order}}"></image>
+            <view>{{sys.icon.fontorder}}</view>
+        </button>
+        <button bindgetuserinfo="getUserInfo" bindtap="{{login?'my':''}}" class="tabbar column" hoverClass="none" lang="zh_CN" openType="{{login?'':'getUserInfo'}}">
+            <image src="{{sys.icon.my}}"></image>
+            <view>{{sys.icon.fontmy}}</view>
+        </button>
+    </view>
+</view>
+<import src="../../../wxParse/wxParse.wxml"></import>
+<view catchtouchmove="preventTouchMove" class="shadow" hidden="{{shadow}}">
+    <scroll-view scrollY catchtouchmove="preventTouchMove" class="pay" hidden="{{level}}" style="height:{{screenHeight*0.5}}px;">
+        <view bindtap="closeLevel" class="closeL">✕</view>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </scroll-view>
+    <view catchtouchmove="preventTouchMove" class="balance column" hidden="{{balance}}">
+        <view bindtap="closePay" class="close">✕</view>
+        <image mode="widthFix" src="../../resource/images/nomoney.png"></image>
+        <view class="leave">余额不足</view>
+        <view bindtap="goMoney" class="payBtn">去储值</view>
+    </view>
+    <view catchtouchmove="preventTouchMove" class="pay" hidden="{{pay}}">
+        <view class="paytitle">{{sys.basic.title}}收银台</view>
+        <view bindtap="closePay" class="close">✕</view>
+        <view class="money flex">
+            <text>当前余额：</text>
+            <image src="../../resource/images/money.png"></image>
+            <text class="leave">{{Allmoney}}元</text>
+        </view>
+        <view class="change">
+            <view bindtap="buy" class="changeitem" data-money="{{item}}" wx:for="{{sysmoney}}" wx:key="index">
+                <text class="num">{{item}}</text>
+                <text>元</text>
+            </view>
+        </view>
+    </view>
+    <view catchtouchmove="preventTouchMove" class="pay" hidden="{{notice}}">
+        <view class="paytitle">{{sys.notice.title}}</view>
+        <view bindtap="closePay" class="close">✕</view>
+        <view class="Ncontent">{{sys.notice.content}}</view>
+    </view>
+</view>

@@ -1,0 +1,85 @@
+<view class="top" style="background:url({{sys.basic.back}}) no-repeat;width:100%;background-size:100% 100%;height:360rpx;">
+    <view class="user column">
+        <image class="avatar" src="{{user.detail.userInfo.avatarUrl?user.detail.userInfo.avatarUrl:'../../resource/images/avatar.png'}}"></image>
+        <view class="nickname">{{user.detail.userInfo.nickName?user.detail.userInfo.nickName:sys.basic.title}}</view>
+        <view class="VIP" wx:if="{{sys.fenxiao.switch==1}}">{{level}}</view>
+    </view>
+    <view class="money flex">
+        <view class="left column">
+            <view>我的{{sys.basic.prop}}</view>
+            <view class="item flex">
+                <image src="{{sys.basic.propicon}}"></image>
+                <view class="mycoin">{{Myrouge}}</view>
+            </view>
+        </view>
+        <view></view>
+        <view class="right column">
+            <view>我的余额</view>
+            <view class="item">
+                <text class="mycoin">{{Allmoney}}</text>
+                <text>元</text>
+            </view>
+        </view>
+    </view>
+    <button bindtap="order" class="order between" hoverClass="none">
+        <view>我的订单</view>
+        <image src="../../resource/images/right.png"></image>
+    </button>
+    <button bindtap="getaddress" class="order between" hoverClass="none">
+        <view>获取地址</view>
+        <image src="../../resource/images/right.png"></image>
+    </button>
+    <button class="order between" hoverClass="none" openType="contact" style="border:0;">
+        <view>联系客服</view>
+        <image src="../../resource/images/right.png"></image>
+    </button>
+    <view class="icon between" wx:if="{{sys.fenxiao.switch==1}}">
+        <view class="mymoney">推广收益：
+      <text style="color:#FD7677;">{{fenxiaomoney}}元</text>
+        </view>
+        <view bindtap="{{getmoney?'getmoney':''}}" class="cash">提现</view>
+    </view>
+    <view class="distribution" wx:if="{{sys.fenxiao.switch==1}}">
+        <view bindtap="detail" class="itemss" data-index="4" style="width:{{Lwidth-1}}px">
+            <view class="img row">
+                <image mode="widthFix" src="../../resource/images/2.png"></image>
+            </view>
+            <view>{{sys.fenxiao.ctitle[0]}}</view>
+        </view>
+        <view bindtap="cash" class="itemss" data-index="5" style="width:{{Lwidth-1}}px">
+            <view class="img row">
+                <image mode="widthFix" src="../../resource/images/3.png"></image>
+            </view>
+            <view>{{sys.fenxiao.ctitle[1]}}</view>
+        </view>
+        <view bindtap="group" class="itemss" data-index="6" style="width:{{Lwidth-1}}px">
+            <view class="img row">
+                <image mode="widthFix" src="../../resource/images/4.png"></image>
+            </view>
+            <view>{{sys.fenxiao.ctitle[2]}}</view>
+        </view>
+        <view bindtap="Qrcode" class="itemss" data-index="7" style="width:{{Lwidth}}px">
+            <view class="img row">
+                <image mode="widthFix" src="../../resource/images/5.png"></image>
+            </view>
+            <view>{{sys.fenxiao.ctitle[3]}}</view>
+        </view>
+    </view>
+    <image bindtap="vip" class="red" data-level="{{levelno}}" mode="widthFix" src="../../resource/images/red.png" wx:if="{{sys.fenxiao.switch==1}}"></image>
+    <view class="footer flex">
+        <button bindtap="index" class="tabbar column" hoverClass="none">
+            <image src="{{sys.icon.order}}"></image>
+            <view>{{sys.icon.fontorder}}</view>
+        </button>
+        <button class="tabbar column" hoverClass="none">
+            <image src="{{sys.icon.my}}"></image>
+            <view>{{sys.icon.fontmy}}</view>
+        </button>
+    </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="shadow" hidden="{{shadow}}"></view>
+<view class="authoraddress column" hidden="{{shadow}}">
+    <view>温馨提示</view>
+    <view>收货地址务必要选择授权，否则没法确认发货</view>
+    <button bindtap="close" class="addbtn" openType="openSetting"> 重新获取地址授权 </button>
+</view>

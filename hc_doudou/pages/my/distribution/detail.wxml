@@ -1,0 +1,33 @@
+<scroll-view scrollX class="orderstatus">
+    <view bindtap="click" class="item {{index==selindex&&orderstatus.length>1?'sel':''}} width{{Upgrade.length}}" data-index="{{index}}" wx:for="{{Upgrade}}" wx:key="index">{{item.grade}}</view>
+</scroll-view>
+<view style="margin-top:94rpx;background:#F2F4F5;">
+    <view class="up" style="background:url({{Upgrade[selindex].pic}})no-repeat;background-size:100% 100%;">
+        <view class="notice">
+            <view class="top">{{Upgrade[selindex].grade}}规则</view>
+            <view class="items">· 享受一级代理佣金收益【{{Upgrade[selindex].commission.commission1}}%】提成</view>
+            <view class="items">· 享受二级代理佣金收益【{{Upgrade[selindex].commission.commission2}}%】提成</view>
+            <view class="items">· 享受三级代理佣金收益【{{Upgrade[selindex].commission.commission3}}%】提成</view>
+            <view class="nice">晋升【{{Upgrade[selindex].grade}}】后将享有以上高级权益</view>
+        </view>
+    </view>
+    <view class="title">
+    升级费用
+  </view>
+    <view class="upmoney" style="background:url({{Upgrade[selindex].pricebg}})no-repeat;background-size:100% 100%;">
+        <view>{{Upgrade[selindex].grade}}</view>
+        <view>￥{{Upgrade[selindex].money}}元</view>
+        <view class="lines"></view>
+    </view>
+    <view class="title">
+    支付方式
+  </view>
+    <view class="between" style="padding:0 5%">
+        <view class="flex row">
+            <image src="../../../resource/images/wechat.png"></image>
+            <view>微信支付</view>
+        </view>
+    </view>
+    <view bindtap="pay" class="pay" data-uplevel="{{selindex}}" wx:if="{{vip<selindex+2}}">确认支付</view>
+    <view class="pay" wx:else>您已经是{{Upgrade[selindex].grade}}</view>
+</view>

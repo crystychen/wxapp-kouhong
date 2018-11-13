@@ -1,0 +1,1 @@
+<image bindtap="download" data-src="{{src}}" src="{{src}}"></image>

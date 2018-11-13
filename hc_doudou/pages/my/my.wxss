@@ -1,0 +1,241 @@
+.user {
+    padding: 30rpx;
+    color: #fff;
+    font-size: 30rpx;
+    position: relative;
+}
+
+.VIP {
+    color: #fcf20a;
+    font-size: 26rpx;
+    background: #fb1f7f;
+    position: absolute;
+    top: 166rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 0 30rpx;
+    border-radius: 20rpx;
+}
+
+.avatar {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    border: 5rpx solid #fff;
+    margin-bottom: 20rpx;
+}
+
+.nickname {
+    max-width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.money {
+    width: 90%;
+    margin: 0 5%;
+    padding: 16rpx 0;
+    border-radius: 20rpx;
+    background: #fff;
+    font-size: 26rpx;
+    justify-content: space-around;
+    box-shadow: 4rpx 4rpx 4rpx #ff7199;
+}
+
+.money>view:nth-child(2) {
+    height: 60rpx;
+    border-right: 2rpx solid #fc6cab;
+}
+
+.money image {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin-right: 50rpx;
+}
+
+.item {
+    margin-top: 10rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #fb1f7f;
+}
+
+.mycoin {
+    font-size: 50rpx;
+}
+
+.order {
+    background: none;
+    margin: 20rpx 5% 0;
+    width: 90%;
+    padding: 0 0 10rpx;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2rpx solid #ededed;
+    font-size: 30rpx;
+    color: #343434;
+    font-weight: bolder;
+}
+
+.order::after {
+    border: none;
+    border-radius: 0;
+}
+
+.order image {
+    width: 20rpx;
+    height: 36rpx;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    font-size: 30rpx;
+    border-top: 2rpx solid #ffdeea;
+}
+
+.footer image {
+    display: block;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.tabbar {
+    background: #fff;
+    color: #fe5a96;
+    padding: 6rpx 0 0;
+    margin: 0;
+    width: 50%;
+    border: none;
+    border-radius: 0;
+    font-size: 30rpx;
+}
+
+.tabbar:after {
+    border: none;
+}
+
+.tabbar>view {
+    height: 56rpx;
+    line-height: 56rpx;
+}
+
+.distribution {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+    margin: 20rpx auto 0;
+    background: #fff;
+    font-size: 28rpx;
+}
+
+.itemss {
+    padding: 30rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2rpx solid #f3f3f3;
+}
+
+.itemss image {
+    width: 44rpx;
+}
+
+.itemss>view:nth-child(2) {
+    font-size: 28rpx;
+    color: #8e8e8e;
+    margin-top: 20rpx;
+}
+
+.distribution>view:nth-child(1),.distribution>view:nth-child(2),.distribution>view:nth-child(3) {
+    border-right: 2rpx solid #f3f3f3;
+}
+
+.img {
+    height: 50rpx;
+}
+
+.red {
+    width: 92%;
+    margin: 40rpx 4%;
+    padding-bottom: 120rpx;
+}
+
+.mymoney {
+    font-weight: bolder;
+}
+
+.icon {
+    background: #fff;
+    width: 90%;
+    padding: 0 5%;
+    font-size: 30rpx;
+    color: #343434;
+    height: 110rpx;
+    line-height: 110rpx;
+    border-top: 16rpx solid #f5f5f5;
+    border-bottom: 16rpx solid #f5f5f5;
+}
+
+.cash {
+    background: #fe5052;
+    color: #fff;
+    font-size: 28rpx;
+    border-radius: 25rpx;
+    padding: 0 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+
+.shadow {
+    background-color: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.authoraddress {
+    position: fixed;
+    transform: translate(-50% -50%);
+    z-index: 4;
+    width: 70%;
+    margin: 0 15%;
+    border-radius: 6rpx;
+    background: #fff;
+    font-size: 30rpx;
+}
+
+.authoraddress>view:nth-child(1) {
+    padding: 30rpx 30rpx 0;
+    padding-bottom: 30rpx;
+    font-size: 36rpx;
+    color: #000;
+}
+
+.authoraddress>view:nth-child(2) {
+    padding: 0 30rpx 0;
+    padding-bottom: 30rpx;
+    text-align: center;
+    color: #999;
+}
+
+.addbtn {
+    background: none;
+    border: 0;
+    color: #3CC51F;
+    width: 100%;
+    border-top: 2rpx solid #f5f5f5;
+}
+
+.addbtn::after {
+    border: 0;
+    font-size: 30rpx;
+}

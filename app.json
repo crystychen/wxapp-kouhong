@@ -1,0 +1,17 @@
+{
+    "pages": [
+        "hc_doudou/pages/login/login",
+        "hc_doudou/pages/my/my",
+        "hc_doudou/pages/detail/detail",
+        "hc_doudou/pages/index/index",
+        "hc_doudou/pages/my/order/order",
+        "hc_doudou/pages/play/play",
+        "hc_doudou/pages/my/share",
+        "hc_doudou/pages/my/group/group",
+        "hc_doudou/pages/my/cash/cash",
+        "hc_doudou/pages/my/distribution/distribution",
+        "hc_doudou/pages/my/distribution/detail",
+        "hc_doudou/pages/test/test",
+        "hc_doudou/pages/try/try"
+    ]
+}

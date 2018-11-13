@@ -1,0 +1,145 @@
+page {
+    background: #f4f4f4;
+}
+
+.orderstatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background: #fff;
+    position: fixed;
+    top: 0;
+}
+
+image {
+    display: block;
+}
+
+.item {
+    display: inline-block;
+    text-align: center;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    color: #111;
+    border-bottom: 6rpx solid #fff;
+}
+
+.sel {
+    color: #fc1853;
+    border-bottom: 6rpx solid #fc1853;
+}
+
+.width1 {
+    width: 40%;
+    margin: 0 30%;
+}
+
+.width2 {
+    width: 30%;
+    margin: 0 10%;
+}
+
+.width3 {
+    width: 29.3%;
+    margin: 0 2%;
+}
+
+.distribution {
+    background: #fff;
+    width: 100%;
+    font-size: 30rpx;
+    color: #545454;
+    margin-bottom: 10rpx;
+}
+
+.between {
+    padding: 16rpx 20rpx;
+}
+
+.row image {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+}
+
+.row {
+    font-size: 28rpx;
+    align-items: center;
+}
+
+.detail {
+    border-top: 2rpx solid #f3f3f3;
+    border-bottom: 2rpx solid #f3f3f3;
+    padding: 10rpx 10px;
+    font-size: 28rpx;
+    height: 100px;
+}
+
+.detail>image {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.ordernum {
+    padding: 30rpx 20rpx;
+    font-size: 28rpx;
+}
+
+.columns {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 20rpx;
+}
+
+.rates {
+    width: 27%;
+    text-align: center;
+    border: 2rpx solid #fff;
+    height: 90rpx;
+    display: flex;
+    font-size: 24rpx;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rate {
+    height: 90rpx;
+    margin-top: 10rpx;
+}
+
+.ratenum {
+    width: 100%;
+    text-align: center;
+    border: 2rpx solid #feacc1;
+    color: #fd1a55;
+    border-radius: 6rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.mark {
+    height: 90rpx;
+    margin: 0 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.mark>view {
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 28rpx;
+}

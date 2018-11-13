@@ -1,0 +1,32 @@
+.goods {
+    width: 94%;
+    padding: 20rpx 3%;
+    font-size: 30rpx;
+    color: #2E2E2E;
+    border-top: 2rpx solid #f4f4f4;
+}
+
+.goodsname {
+    margin: 16rpx 0;
+}
+
+.sale {
+    color: #8D8D8D;
+    font-size: 26rpx;
+}
+
+.buy {
+    width: 70%;
+    font-size: 30rpx;
+    margin: 80rpx auto;
+    background: #FD1853;
+    color: #fff;
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+}
+
+.price {
+    color: #f94d4d;
+}

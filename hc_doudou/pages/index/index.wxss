@@ -1,0 +1,306 @@
+.top {
+    padding-top: 30rpx;
+}
+
+.blur {
+    filter: blur(20rpx);
+}
+
+page {
+    background: #fef2f6;
+}
+
+.music {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.music image {
+    width: 40rpx;
+    height: 40rpx;
+    background: rgba(0,0,0,0.5);
+    padding: 10rpx;
+    border-radius: 30rpx;
+    display: block;
+}
+
+.search {
+    width: 84%;
+    margin: 0 5% 30rpx;
+    background: #fff;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+    padding: 0 3%;
+    font-size: 26rpx;
+    color: #ff9fc2;
+}
+
+.search image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+    display: block;
+}
+
+.tips {
+    width: 90%;
+    margin: 0 5%;
+    display: block;
+}
+
+.game {
+    width: 90%;
+    margin: 30rpx 5%;
+}
+
+.game>view:nth-child(1) {
+    font-size: 32rpx;
+    color: #383435;
+    font-weight: bolder;
+}
+
+.game>view:nth-child(2) {
+    font-size: 28rpx;
+    color: #fe9cb8;
+}
+
+.goods {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 92%;
+    padding: 0 4% 120rpx;
+}
+
+.item image {
+    width: 100%;
+    display: block;
+}
+
+.detail {
+    background: #fff;
+}
+
+.item {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 1% 20rpx;
+    width: 31.3%;
+    font-size: 28rpx;
+    color: #161616;
+}
+
+.item:after {
+    border-radius: 10rpx;
+    border: none;
+}
+
+.detail {
+    padding: 0 0 10rpx;
+    border-radius: 10rpx;
+}
+
+.detail>view {
+    height: 40rpx;
+    line-height: 40rpx;
+    overflow: hidden;   
+	  white-space: nowrap;  
+	  text-overflow: ellipsis;
+}
+
+.price {
+    color: #bf1c12;
+}
+
+.model {
+    font-size: 32rpx;
+}
+
+.btn {
+    margin-top: 20rpx;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    background: -webkit-linear-gradient(left,#f8807f,#fe5a95);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    font-size: 30rpx;
+    border-top: 2rpx solid #ffdeea;
+}
+
+.footer image {
+    display: block;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.tabbar {
+    background: #fff;
+    color: #fe5a96;
+    padding: 6rpx 0 0;
+    margin: 0;
+    width: 50%;
+    border: none;
+    border-radius: 0;
+    font-size: 30rpx;
+}
+
+.tabbar:after {
+    border: none;
+}
+
+.tabbar>view {
+    height: 56rpx;
+    line-height: 56rpx;
+}
+
+.shadow {
+    background-color: hsla(0,0%,100%,0.4);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.pay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 88%;
+    padding: 30rpx 3%;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 6rpx 6rpx 6rpx #FDA3BD;
+}
+
+.pay image {
+    width: 40rpx;
+    height: 40rpx;
+    display: block;
+    margin-right: 20rpx;
+}
+
+.paytitle {
+    color: #FB1F7F;
+    text-align: center;
+    font-size: 40rpx;
+}
+
+.close {
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+    font-size: 40rpx;
+}
+
+.money {
+    font-size: 30rpx;
+    color: #333;
+    margin: 50rpx 0;
+}
+
+.leave {
+    color: #FB1F7F;
+}
+
+.change {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.changeitem {
+    width: 28%;
+    margin: 0 2%;
+    height: 160rpx;
+    line-height: 160rpx;
+    margin-bottom: 30rpx;
+    color: #FB1F7F;
+    border: 4rpx solid #FB1F7F;
+    border-radius: 6rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.num {
+    font-size: 50rpx;
+}
+
+.Ncontent {
+    padding: 30rpx;
+    font-size: 30rpx;
+}
+
+.balance {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 66%;
+    padding: 30rpx 3%;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 6rpx 6rpx 6rpx #FDA3BD;
+}
+
+.balance image {
+    width: 340rpx;
+    margin-bottom: 30rpx;
+}
+
+.payBtn {
+    font-size: 30rpx;
+    color: #fff;
+    background: #FB1F7F;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    width: 56%;
+    margin-top: 30rpx;
+    text-align: center;
+}
+
+.tryBtn {
+    position: fixed;
+    right: 36rpx;
+    bottom: 150rpx;
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.tryBtn:after {
+    border: 0;
+}
+
+.try {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+}
+
+.wxParse-inline {
+    color: #FB1F7F;
+}
+
+.closeL {
+    position: absolute;
+    top: 0rpx;
+    right: 0rpx;
+    font-size: 50rpx;
+}

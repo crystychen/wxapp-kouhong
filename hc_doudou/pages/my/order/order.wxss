@@ -1,0 +1,80 @@
+page {
+    background: #F4F4F4;
+}
+
+.order {
+    background: #fff;
+    margin-top: 20rpx;
+    font-size: 30rpx;
+}
+
+.goods {
+    margin: 0 5%;
+    padding: 30rpx 0;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+
+.goods image {
+    width: 160rpx;
+    height: 160rpx;
+    display: block;
+    margin-right: 30rpx;
+}
+
+.express {
+    font-size: 28rpx;
+    margin: 0 5%;
+    padding: 20rpx 0 0;
+    color: #333;
+}
+
+.express>view {
+    padding-bottom: 20rpx;
+}
+
+.detail {
+    width: 70%;
+    align-items: flex-start;
+}
+
+.model {
+    width: 100%;
+}
+
+.model>view:nth-child(1) {
+    font-size: 36rpx;
+    color: #333;
+}
+
+.model>view:nth-child(2) {
+    font-size: 28rpx;
+    color: #FE55A7;
+}
+
+.name {
+    font-size: 28rpx;
+    color: #515151;
+    margin: 10rpx 0;
+}
+
+.orderstatus {
+    font-size: 36rpx;
+    color: #F24A54;
+}
+
+.copy {
+    font-size: 24rpx;
+    border: 2rpx solid #e1e1e1;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    padding: 0 20rpx;
+}
+
+.nogoods {
+    text-align: center;
+    width: 100%;
+    margin: 30rpx 0;
+    color: #888888;
+    font-size: 30rpx;
+}

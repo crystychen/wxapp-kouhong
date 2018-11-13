@@ -1,0 +1,1 @@
+<button bindtap="scan">扫码</button>

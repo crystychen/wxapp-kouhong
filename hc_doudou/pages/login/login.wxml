@@ -1,0 +1,35 @@
+<view hidden="{{examine}}">
+    <video autoplay bindended="end" hidden="{{videoPlay}}" id="myVideo" src="{{sys.basic.video}}" style="width:{{screenWidth}}px;height:{{screenHeight}}px;">
+        <cover-view bindtap="pass" class="pass">跳过</cover-view>
+    </video>
+</view>
+<view hidden="{{noexamine}}">
+    <swiper autoplay="true" duration="500" interval="5000">
+        <swiper-item>
+            <image class="ads" src="{{sys.version.img}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="notice between">
+        <view class="noticeL  flex row">
+            <image class="noticead" src="../../resource/images/notices.png"></image>
+            <view class="Ntitle ">
+                <view>总有一支适合你或者你的那个她</view>
+                <view>线上口红奖品展示，请到店参加。</view>
+            </view>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="goodslist">
+        <view bindtap="details" class="goods" data-id="{{item.id}}" wx:for="{{goodss}}" wx:key="index">
+            <image mode="widthFix" src="{{item.thumb}}"></image>
+            <view class="goodsdetail">
+                <view class="goodsName">
+            {{item.title}}
+          </view>
+                <view class="price between" wx:if="{{system!='iOS'}}">
+                    <view>￥{{item.price}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

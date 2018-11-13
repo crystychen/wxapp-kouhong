@@ -1,0 +1,28 @@
+<view class="order" wx:if="{{order.length!=0}}" wx:for="{{order}}" wx:key="index">
+    <view class="goods flex">
+        <image src="{{item.goods.thumb}}"></image>
+        <view class="detail column">
+            <view class="model between">
+                <view>{{item.goods.model}}</view>
+                <view wx:if="{{item.type==2||item.type==0}}">未中奖</view>
+                <view wx:if="{{item.status==1&&item.type==1}}">待发货</view>
+                <view wx:if="{{item.status==2&&item.type==1}}">已发货</view>
+            </view>
+            <view class="name">{{item.goods.title}}</view>
+            <view class="orderstatus">{{item.type==1?'挑战成功 免费包邮':''}}</view>
+            <view class="orderstatus">{{item.type==2||item.type==0?'挑战失败':''}}</view>
+        </view>
+    </view>
+    <view class="express">
+        <view class="expressnum between" wx:if="{{item.type!=2||item.type!=0}}">
+            <view>订单编号：{{item.trade_no}}</view>
+            <view bindtap="copy" class="copy" data-copy="{{item.trade_no}}">复制</view>
+        </view>
+        <view class="date" wx:if="{{item.passtime}}">过关时间：{{item.passtime}}</view>
+        <view class="date between" wx:if="{{item.status==2}}">
+            <view>快递单号：{{item.expresn}}</view>
+            <view bindtap="copy" class="copy" data-copy="{{item.expresn}}">复制</view>
+        </view>
+    </view>
+</view>
+<view class="nogoods" wx:if="{{order.length==0}}">- - - 暂无订单 - - -</view>
