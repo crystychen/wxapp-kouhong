@@ -2,28 +2,32 @@ var siteinfo = require("../../../siteinfo.js"), app = getApp();
 
 Page({
     data: {},
-    onLoad: function(a) {
-        var o = siteinfo.siteroot + "?i=" + siteinfo.acid + "&c=entry&m=hc_doudou&do=games&game=1";
+    onShow: function() {
+        var o = new Date().valueOf();
+        console.log(o);
+        var a = siteinfo.siteroot + "?i=" + siteinfo.acid + "&c=entry&m=hc_doudou&do=games&game=1?version=" + o;
         this.setData({
-            url: o
-        });
-        var t = app.globalData.sys;
-        wx.setNavigationBarColor({
-            frontColor: t.basic.fontcolor,
-            backgroundColor: t.basic.color
-        }), wx.setNavigationBarTitle({
-            title: t.basic.title
+            url: a
         });
     },
-    Test: function(a) {
-        a.detail.data;
-        console.log(a);
+    onLoad: function(o) {
+        var a = app.globalData.sys;
+        wx.setNavigationBarColor({
+            frontColor: a.basic.fontcolor,
+            backgroundColor: a.basic.color
+        }), wx.setNavigationBarTitle({
+            title: a.basic.title
+        });
+    },
+    Test: function(o) {
+        o.detail.data;
+        console.log(o);
     },
     onShareAppMessage: function() {
-        var a = app.globalData.sys;
+        var o = app.globalData.sys;
         return {
-            title: a.forward.title,
-            imageUrl: a.forward.img,
+            title: o.forward.title,
+            imageUrl: o.forward.img,
             path: "hc_doudou/pages/login/login"
         };
     }

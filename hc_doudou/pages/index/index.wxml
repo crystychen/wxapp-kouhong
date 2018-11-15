@@ -3,7 +3,6 @@
         <view></view>
         <image bindtap="closevoice" data-voice="{{sys.basic.bgm}}" src="{{closeV?'../../resource/images/voice.png':'../../resource/images/closevoice.png'}}"></image>
     </view>
-    <audio loop id="myAudio"></audio>
     <image class="tips" mode="widthFix" src="{{sys.basic.icon}}"></image>
     <view class="game between">
         <view>{{sys.basic.cgtitle}}</view>

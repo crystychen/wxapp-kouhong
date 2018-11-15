@@ -2,15 +2,40 @@ var app = getApp();
 
 Page({
     data: {},
-    onLoad: function(a) {
-        var o = app.globalData.user_id, t = app.globalData.sys;
+    onLoad: function(o) {
+        var a = app.globalData.sys;
         wx.setNavigationBarColor({
-            frontColor: t.basic.fontcolor,
-            backgroundColor: t.basic.color
+            frontColor: a.basic.fontcolor,
+            backgroundColor: a.basic.color
         }), wx.setNavigationBarTitle({
             title: "生成海报"
         });
-        var n = this;
+    },
+    download: function(o) {
+        var a = o.currentTarget.dataset.src, t = [];
+        t.push(a), wx.previewImage({
+            urls: t,
+            current: t[0]
+        }), wx.showToast({
+            title: "下载中...",
+            icon: "none"
+        }), wx.downloadFile({
+            url: a,
+            success: function(o) {
+                wx.saveImageToPhotosAlbum({
+                    filePath: o.tempFilePath,
+                    success: function(o) {
+                        wx.hideToast(), console.log("Qrcode", o), wx.showToast({
+                            icon: "success",
+                            title: "保存成功"
+                        });
+                    }
+                });
+            }
+        });
+    },
+    onShow: function() {
+        var o = app.globalData.user_id, a = this;
         app.util.request({
             url: "entry/wxapp/Qrcode",
             method: "post",
@@ -18,34 +43,26 @@ Page({
             data: {
                 uid: o
             },
-            success: function(a) {
+            success: function(o) {
                 wx.showToast({
                     title: "点击预览，长按保存到手机",
                     icon: "none"
-                }), n.setData({
-                    src: a.data.data
+                }), a.setData({
+                    src: o.data.data
                 });
             }
         });
     },
-    download: function(a) {
-        var o = a.currentTarget.dataset.src, t = [];
-        t.push(o), wx.previewImage({
-            urls: t,
-            current: t[0]
-        });
-    },
-    onShow: function() {},
     onHide: function() {},
     onUnload: function() {},
     onPullDownRefresh: function() {},
     onReachBottom: function() {},
     onShareAppMessage: function() {
-        var a = app.globalData.sys, o = app.globalData.user_id;
+        var o = app.globalData.sys, a = app.globalData.user_id;
         return {
-            title: a.forward.title,
-            imageUrl: a.forward.img,
-            path: "hc_doudou/pages/login/login?pid=" + o
+            title: o.forward.title,
+            imageUrl: o.forward.img,
+            path: "hc_doudou/pages/login/login?pid=" + a
         };
     }
 });

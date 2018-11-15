@@ -1,50 +1,63 @@
-var orderId, noauthorAdd, app = getApp();
+var orderId, noauthorAdd, _Checkmoneycode, app = getApp();
 
 Page({
     data: {
         shadow: !0,
-        getmoney: !0
+        getmoney: !0,
+        change: !0
     },
     onLoad: function(a) {
-        var t = app.globalData.screenHeight, e = app.globalData.screenWidth, s = app.globalData.sys;
+        var e = app.globalData.screenHeight, t = app.globalData.screenWidth, o = app.globalData.sys;
         wx.setNavigationBarColor({
-            frontColor: s.basic.fontcolor,
-            backgroundColor: s.basic.color
+            frontColor: o.basic.fontcolor,
+            backgroundColor: o.basic.color
         }), wx.setNavigationBarTitle({
-            title: s.basic.title
+            title: o.basic.title
         });
-        var o = wx.getStorageSync("user");
+        var s = wx.getStorageSync("user");
         this.setData({
-            user: o,
-            sys: s,
-            screenWidth: e,
-            Lwidth: e / 4,
-            screenHeight: t
+            user: s,
+            sys: o,
+            screenWidth: t,
+            Lwidth: t / 4,
+            screenHeight: e
         });
     },
     onShow: function() {
-        Promise.all([ this.sys(), this.Mymoney(), this.Myrouge(), this.Canmoney() ]).then(function(a) {});
+        Promise.all([ this.sys(), this.Mymoney(), this.Myrouge(), this.Checkmoneycode(), this.Canmoney() ]).then(function(a) {});
+    },
+    Checkmoneycode: function() {
+        app.util.request({
+            url: "entry/wxapp/Checkmoneycode",
+            method: "POST",
+            data: {
+                uid: app.globalData.user_id
+            },
+            success: function(a) {
+                console.log("res", a), _Checkmoneycode = a.data.data;
+            }
+        });
     },
     getaddress: function() {
-        var t = this;
+        var e = this;
         wx.getSetting({
             success: function(a) {
-                null == a.authSetting["scope.address"] ? t.getAddress() : a.authSetting["scope.address"] ? t.getAddress() : t.setData({
+                null == a.authSetting["scope.address"] ? e.getAddress() : a.authSetting["scope.address"] ? e.getAddress() : e.setData({
                     shadow: !1
                 });
             }
         });
     },
     sys: function() {
-        var e = this;
+        var t = this;
         app.util.request({
             url: "entry/wxapp/sys",
             method: "POST",
             success: function(a) {
-                console.log(a.data.data);
-                var t = a.data.data;
-                e.setData({
-                    sys: t
+                app.globalData.sys = a.data.data;
+                var e = a.data.data;
+                t.setData({
+                    sys: e
                 });
             }
         });
@@ -53,7 +66,7 @@ Page({
         this.setData({
             getmoney: !1
         });
-        var t = this;
+        var e = this;
         app.util.request({
             url: "entry/wxapp/Cash",
             method: "POST",
@@ -65,24 +78,54 @@ Page({
                     title: "温馨提示",
                     content: a.data.message,
                     showCancel: !1
-                }), t.Canmoney();
+                }), e.Canmoney();
             }
         }), setTimeout(function() {
-            t.setData({
+            e.setData({
                 getmoney: !0
             });
         }, 3e3);
     },
+    changecash: function() {
+        var e = this;
+        if (0 == parseFloat(this.data.fenxiaomoney)) return wx.showToast({
+            title: "余额不足"
+        }), !1;
+        wx.showModal({
+            title: "温馨提示",
+            content: "推广收益转进余额可以继续游戏，但不能直接提现。",
+            success: function(a) {
+                a.confirm && app.util.request({
+                    url: "entry/wxapp/Yuetomoney",
+                    method: "POST",
+                    data: {
+                        uid: app.globalData.user_id
+                    },
+                    success: function(a) {
+                        console.log("转余额success", a.data.message), wx.showToast({
+                            title: a.data.message,
+                            icon: "none"
+                        }), setTimeout(function() {
+                            Promise.all([ e.Mymoney(), e.Canmoney() ]).then(function(a) {});
+                        }, 1e3);
+                    },
+                    fail: function(a) {
+                        console.log("转余额fail", a);
+                    }
+                });
+            }
+        });
+    },
     getAddress: function() {
-        var o = this;
+        var s = this;
         wx.chooseAddress({
             success: function(a) {
-                var t = a.provinceName + "," + a.cityName + "," + a.countyName + a.detailInfo, e = a.telNumber, s = a.userName;
-                o.setData({
-                    address: t,
-                    telphone: e,
-                    userName: s
-                }), o.submitaddress(t, e, s);
+                var e = a.provinceName + "," + a.cityName + "," + a.countyName + a.detailInfo, t = a.telNumber, o = a.userName;
+                s.setData({
+                    address: e,
+                    telphone: t,
+                    userName: o
+                }), s.submitaddress(e, t, o);
             }
         });
     },
@@ -97,9 +140,9 @@ Page({
         });
     },
     vip: function(a) {
-        var t = a.currentTarget.dataset.level;
+        var e = a.currentTarget.dataset.level;
         wx.navigateTo({
-            url: "distribution/detail?vip=" + t
+            url: "distribution/detail?vip=" + e
         });
     },
     cash: function() {
@@ -110,6 +153,11 @@ Page({
     Qrcode: function() {
         wx.navigateTo({
             url: "share"
+        });
+    },
+    qrcode: function() {
+        wx.navigateTo({
+            url: "qrcode/qrcode?code=" + _Checkmoneycode
         });
     },
     group: function() {
@@ -123,7 +171,7 @@ Page({
         });
     },
     Myrouge: function() {
-        var t = this;
+        var e = this;
         app.util.request({
             url: "entry/wxapp/Myrouge",
             method: "POST",
@@ -131,14 +179,14 @@ Page({
                 uid: app.globalData.user_id
             },
             success: function(a) {
-                t.setData({
+                e.setData({
                     Myrouge: a.data.data
                 });
             }
         });
     },
     Canmoney: function() {
-        var t = this;
+        var e = this;
         app.util.request({
             url: "entry/wxapp/Canmoney",
             method: "POST",
@@ -146,7 +194,7 @@ Page({
                 uid: app.globalData.user_id
             },
             success: function(a) {
-                t.setData({
+                e.setData({
                     fenxiaomoney: a.data.data.money,
                     level: a.data.data.level,
                     levelno: a.data.data.levelno
@@ -155,7 +203,7 @@ Page({
         });
     },
     Mymoney: function() {
-        var t = this;
+        var e = this;
         app.util.request({
             url: "entry/wxapp/Mymoney",
             method: "POST",
@@ -163,7 +211,7 @@ Page({
                 uid: app.globalData.user_id
             },
             success: function(a) {
-                t.setData({
+                e.setData({
                     Allmoney: a.data.data
                 });
             }
@@ -174,21 +222,21 @@ Page({
             shadow: !0
         });
     },
-    submitaddress: function(a, t, e) {
-        var s = this;
+    submitaddress: function(a, e, t) {
+        var o = this;
         app.util.request({
             url: "entry/wxapp/Address",
             method: "POST",
             data: {
                 uid: app.globalData.user_id,
-                username: e,
-                mobile: t,
+                username: t,
+                mobile: e,
                 address: a
             },
             success: function(a) {
                 wx.showToast({
                     title: "地址获取成功"
-                }), s.setData({
+                }), o.setData({
                     Allmoney: a.data.data
                 });
             }
@@ -199,14 +247,12 @@ Page({
             url: "share/share"
         });
     },
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
     onShareAppMessage: function() {
-        var a = app.globalData.sys, t = app.globalData.user_id;
+        var a = app.globalData.sys, e = app.globalData.user_id;
         return {
             title: a.forward.title,
             imageUrl: a.forward.img,
-            path: "hc_doudou/pages/login/login?pid=" + t
+            path: "hc_doudou/pages/login/login?pid=" + e
         };
     }
 });

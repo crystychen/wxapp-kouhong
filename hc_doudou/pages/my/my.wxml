@@ -6,7 +6,7 @@
     </view>
     <view class="money flex">
         <view class="left column">
-            <view>我的{{sys.basic.prop}}</view>
+            <view>{{sys.basic.prop}}</view>
             <view class="item flex">
                 <image src="{{sys.basic.propicon}}"></image>
                 <view class="mycoin">{{Myrouge}}</view>
@@ -37,7 +37,11 @@
         <view class="mymoney">推广收益：
       <text style="color:#FD7677;">{{fenxiaomoney}}元</text>
         </view>
-        <view bindtap="{{getmoney?'getmoney':''}}" class="cash">提现</view>
+        <view class="flex">
+            <view bindtap="changecash" class="cash" style="margin-right:20rpx;">转到余额</view>
+            <view bindtap="{{getmoney?'qrcode':''}}" class="cash" wx:if="{{sys.cash.type==1}}">提现</view>
+            <view bindtap="{{getmoney?'getmoney':''}}" class="cash" wx:if="{{sys.cash.type==0}}">提现</view>
+        </view>
     </view>
     <view class="distribution" wx:if="{{sys.fenxiao.switch==1}}">
         <view bindtap="detail" class="itemss" data-index="4" style="width:{{Lwidth-1}}px">

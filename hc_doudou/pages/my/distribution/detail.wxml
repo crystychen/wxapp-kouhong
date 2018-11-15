@@ -5,10 +5,12 @@
     <view class="up" style="background:url({{Upgrade[selindex].pic}})no-repeat;background-size:100% 100%;">
         <view class="notice">
             <view class="top">{{Upgrade[selindex].grade}}规则</view>
-            <view class="items">· 享受一级代理佣金收益【{{Upgrade[selindex].commission.commission1}}%】提成</view>
-            <view class="items">· 享受二级代理佣金收益【{{Upgrade[selindex].commission.commission2}}%】提成</view>
-            <view class="items">· 享受三级代理佣金收益【{{Upgrade[selindex].commission.commission3}}%】提成</view>
-            <view class="nice">晋升【{{Upgrade[selindex].grade}}】后将享有以上高级权益</view>
+            <view class="ruler column">
+                <view class="items">· 第一重奖励【{{Upgrade[selindex].commission.commission1}}%】</view>
+                <view class="items" wx:if="{{level>1}}">· 第二重奖励【{{Upgrade[selindex].commission.commission2}}%】</view>
+                <view class="items" wx:if="{{level>2}}">· 第三重奖励【{{Upgrade[selindex].commission.commission3}}%】</view>
+                <view class="nice">晋升【{{Upgrade[selindex].grade}}】后将享有以上高级奖励</view>
+            </view>
         </view>
     </view>
     <view class="title">

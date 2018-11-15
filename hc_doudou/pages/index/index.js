@@ -52,17 +52,19 @@ Page({
             backgroundColor: a.basic.color
         }), wx.setNavigationBarTitle({
             title: a.basic.title
-        }), closeV = wx.getStorageSync("closevoice"), this.audioCtx = wx.createAudioContext("myAudio"), 
-        closeV && (this.audioCtx.setSrc(a.basic.bgm), this.audioCtx.play()), this.setData({
+        }), (closeV = wx.getStorageSync("closevoice")) && (this.back = wx.getBackgroundAudioManager(), 
+        this.back.src = a.basic.bgm, this.back.title = a.basic.title, this.back.play()), 
+        this.setData({
             sys: a,
             closeV: closeV
         });
     },
     closevoice: function(a) {
-        var t = a.currentTarget.dataset.voice;
-        closeV ? (closeV = !1, this.audioCtx.setSrc(t), wx.setStorageSync("closevoice", !1), 
-        this.audioCtx.pause()) : (closeV = !0, this.audioCtx.setSrc(t), this.audioCtx.play(), 
-        wx.setStorageSync("closevoice", !0)), this.setData({
+        var t = app.globalData.sys;
+        a.currentTarget.dataset.voice;
+        closeV ? (closeV = !1, this.back.stop(), wx.setStorageSync("closevoice", !1)) : (this.back = wx.getBackgroundAudioManager(), 
+        this.back.src = t.basic.bgm, this.back.title = t.basic.title, this.back.play(), 
+        closeV = !0, wx.setStorageSync("closevoice", !0)), this.setData({
             closeV: closeV
         });
     },
@@ -87,9 +89,9 @@ Page({
             title: "IOS暂不能体验，请耐心等待",
             icon: "none"
         }), !1;
-        var e, o, s = a.currentTarget.dataset.need, n = a.currentTarget.dataset.id;
-        s <= parseInt(this.data.Allmoney) ? (this.goplay(n), o = e = !0) : o = e = !1, this.setData({
-            shadow: o,
+        var e, s, o = a.currentTarget.dataset.need, n = a.currentTarget.dataset.id;
+        o <= parseInt(this.data.Allmoney) ? (this.goplay(n), s = e = !0) : s = e = !1, this.setData({
+            shadow: s,
             balance: e
         });
     },
@@ -126,7 +128,7 @@ Page({
         });
     },
     onUnload: function() {
-        this.audioCtx.pause();
+        console.log("暂停"), this.back.stop();
     },
     check: function() {
         var t = this;
@@ -157,6 +159,7 @@ Page({
         });
     },
     pay: function(a) {
+        var t = this;
         wx.requestPayment({
             timeStamp: "" + a.timeStamp,
             nonceStr: a.nonceStr,
@@ -164,8 +167,9 @@ Page({
             signType: "MD5",
             paySign: a.sign,
             success: function(a) {
-                wx.redirectTo({
-                    url: "../get/get"
+                console.log("支付成功", a), t.setData({
+                    shadow: !0,
+                    pay: !0
                 });
             },
             fail: function(a) {}
@@ -197,7 +201,7 @@ Page({
         });
     },
     login: function(e) {
-        var o = this;
+        var s = this;
         wx.login({
             success: function(a) {
                 var t = e.detail;
@@ -211,7 +215,7 @@ Page({
                     success: function(a) {
                         0 == a.data.errno && (t.session_key = a.data.data.session_key, t.openid = a.data.data.openid, 
                         app.globalData.userInfo = t, wx.setStorageSync("user", e), "function" == typeof cb && cb(app.globalData.userInfo), 
-                        o.register());
+                        s.register());
                     }
                 });
             },
@@ -220,16 +224,16 @@ Page({
     },
     register: function(a) {
         var t = this, e = (t.data.selfuid, t.data.selflevel, t.data.wechat, t.data.getreward, 
-        wx.getStorageSync("user").detail), o = e.session_key, s = e.openid, n = e.iv, i = e.encryptedData;
+        wx.getStorageSync("user").detail), s = e.session_key, o = e.openid, n = e.iv, i = e.encryptedData;
         app.util.request({
             url: "entry/wxapp/Getuserinfo",
             method: "post",
             dataType: "json",
             data: {
-                session_key: o,
+                session_key: s,
                 encryptedData: i,
                 iv: n,
-                openid: s
+                openid: o
             },
             success: function(a) {
                 app.globalData.user_id = a.data.data, Promise.all([ t.Mymoney(a.data.data), t.Bindnexus(a.data.data) ]).then(function(a) {}), 
@@ -241,7 +245,7 @@ Page({
     },
     Bindnexus: function(a) {
         var t = wx.getStorageSync("pid");
-        console.log("绑定分销关系", t);
+        console.log("hahapid", t);
         t && app.util.request({
             url: "entry/wxapp/Bindnexus",
             method: "POST",
@@ -249,9 +253,7 @@ Page({
                 uid: a,
                 pid: t
             },
-            success: function(a) {
-                console.log("绑定分销关系");
-            }
+            success: function(a) {}
         });
     },
     Mymoney: function(a) {

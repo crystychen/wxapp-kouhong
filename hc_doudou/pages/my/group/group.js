@@ -12,7 +12,7 @@ Page({
             frontColor: t.basic.fontcolor,
             backgroundColor: t.basic.color
         }), page = 1, wx.setNavigationBarTitle({
-            title: "我的团队"
+            title: t.fenxiao.ctitle[2]
         }), this.setData({
             windowWidth: app.globalData.screenWidth
         });
@@ -22,13 +22,13 @@ Page({
         page = 1, status = 0 == t ? "" : 3 == t ? 3 : parseInt(t) - 1, this.setData({
             selindex: t,
             Teamlist: []
-        }), this.Teamlist(), this.Teamcount();
+        }), Promise.all([ this.Teamcount(), this.Teamlist() ]).then(function(a) {});
     },
     onShow: function() {
         var a = app.globalData.sys.fenxiao.level;
         this.setData({
             level: a
-        }), this.Teamlist(), this.Teamcount(), 1 == app.globalData.sys.basic.seal ? wx.onUserCaptureScreen(function(a) {
+        }), Promise.all([ this.Teamcount(), this.Teamlist() ]).then(function(a) {}), 1 == app.globalData.sys.basic.seal ? wx.onUserCaptureScreen(function(a) {
             wx.setStorageSync("screen", !0), wx.navigateBack({
                 delta: 2
             });

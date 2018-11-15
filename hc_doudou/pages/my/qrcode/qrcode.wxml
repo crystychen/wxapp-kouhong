@@ -1,0 +1,22 @@
+<view class="apple">
+    <view class="notice">
+        <view>上传微信收码说明</view>
+        <view>上传微信收款码：</view>
+        <view>1.打开微信-钱包-收付款-二维码收款-将生成的收款码保存到相册</view>
+        <view>2.上传您的微信收款码</view>
+        <view>3.申请提现后请耐心等待，将直接通过收款码发放到您的微信零钱</view>
+    </view>
+    <view class="up">
+        <view bindtap="chooseImg" class="upphotos" hidden="{{showexample}}">
+            <image class="upphoto" src="../../../resource/images/upexample.png"></image>
+        </view>
+        <image bindtap="chooseImg" class="uppic" hidden="{{!showexample}}" mode="aspectFit" src="{{logo}}"></image>
+        <view class="delandsel">
+            <view bindtap="delpic">删除图片</view>
+            <view bindtap="chooseImg">修改图片</view>
+        </view>
+    </view>
+</view>
+<view class="footer">
+    <button bindtap="upImg" class="btn">提现</button>
+</view>

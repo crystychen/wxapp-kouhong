@@ -1,0 +1,91 @@
+page {
+    background: #F0EFED;
+    width: 100%;
+}
+
+.notice {
+    width: 86%;
+    padding: 20rpx 3%;
+    margin: 20rpx 4%;
+    background: #FAFAFA;
+    color: #353533;
+    font-size: 30rpx;
+    line-height: 50rpx;
+}
+
+.notice view:nth-child(1) {
+    font-size: 36rpx;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.notice view:nth-child(2) {
+    font-size: 30rpx;
+    font-weight: bolder;
+}
+
+.up {
+    width: 86%;
+    padding: 40rpx 3%;
+    margin: 20rpx 4%;
+    background: #fff;
+}
+
+.upphotos {
+    width: 450rpx;
+    height: 450rpx;
+    background: #F6F6F6;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.uppic {
+    width: 450rpx;
+    height: 450rpx;
+    display: block;
+    margin: auto;
+}
+
+.upphoto {
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.delandsel {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.delandsel view {
+    width: 50%;
+    text-align: center;
+    color: #25B3FF;
+    font-size: 30rpx;
+    margin-top: 30rpx;
+}
+
+.delandsel view:nth-child(1) {
+    border-right: 2rpx solid #BCBCBC;
+}
+
+.btn {
+    background: #FA1E7E;
+    color: #fff;
+    font-size: 30rpx;
+    width: 92%;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20rpx 0;
+    background: #fff;
+}

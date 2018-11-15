@@ -13,8 +13,8 @@ Page({
         });
         var e = app.globalData.sys.fenxiao.level;
         wx.setNavigationBarTitle({
-            title: "升级代理"
-        }), console.log("options.vip", a.vip), this.setData({
+            title: t.basic.title
+        }), console.log("options.vip", e), this.setData({
             windowWidth: app.globalData.screenWidth,
             level: e,
             vip: a.vip

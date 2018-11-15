@@ -1,1 +1,1 @@
-<button bindtap="scan">扫码</button>
+<canvas bindlongtap="down" canvasId="firstCanvas" style="width: {{width}}px; height: {{height}}px;"></canvas>

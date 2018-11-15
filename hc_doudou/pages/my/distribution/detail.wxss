@@ -167,9 +167,11 @@ image {
     border-radius: 30rpx;
     background: rgba(252,196,0,0.5);
     color: #fff;
+    position: relative;
 }
 
 .top {
+    position: absolute;
     background: rgba(246,208,90,0.5);
     height: 80rpx;
     line-height: 80rpx;
@@ -178,7 +180,15 @@ image {
     font-size: 30rpx;
     font-weight: blod;
     text-align: center;
-    margin-bottom: 20rpx;
+    top: 0;
+    width: 100%;
+    clear: both;
+}
+
+.ruler {
+    justify-content: center;
+    padding-top: 80rpx;
+    height: 260rpx;
 }
 
 .items {

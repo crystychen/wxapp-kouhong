@@ -10,7 +10,7 @@ Page({
             frontColor: t.basic.fontcolor,
             backgroundColor: t.basic.color
         }), page = 1, wx.setNavigationBarTitle({
-            title: "提现记录"
+            title: t.fenxiao.ctitle[1]
         });
     },
     onReady: function() {},
@@ -22,7 +22,7 @@ Page({
         }) : wx.setStorageSync("screen", !1);
     },
     cash: function() {
-        var e = this, s = e.data.cashlist;
+        var e = this, n = e.data.cashlist;
         app.util.request({
             url: "entry/wxapp/CashList",
             method: "POST",
@@ -33,9 +33,9 @@ Page({
             success: function(a) {
                 console.log("cash", a);
                 var t = a.data.data;
-                if (0 < t.length) for (var o in page++, t) s.push(t[o]);
+                if (0 < t.length) for (var o in page++, t) n.push(t[o]);
                 e.setData({
-                    cashlists: s
+                    cashlists: n
                 });
             }
         });

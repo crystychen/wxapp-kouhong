@@ -45,7 +45,7 @@ page {
 
 .tips {
     width: 90%;
-    margin: 0 5%;
+    margin: 30rpx 5% 0;
     display: block;
 }
 
@@ -105,9 +105,6 @@ page {
 .detail>view {
     height: 40rpx;
     line-height: 40rpx;
-    overflow: hidden;   
-	  white-space: nowrap;  
-	  text-overflow: ellipsis;
 }
 
 .price {

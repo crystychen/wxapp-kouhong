@@ -12,7 +12,7 @@ Page({
             frontColor: t.basic.fontcolor,
             backgroundColor: t.basic.color
         }), page = 1, wx.setNavigationBarTitle({
-            title: "分销明细"
+            title: t.fenxiao.ctitle[0]
         }), this.setData({
             windowWidth: app.globalData.screenWidth
         });
@@ -22,7 +22,7 @@ Page({
         page = 1, status = 0 == t ? "" : 3 == t ? 3 : parseInt(t) - 1, this.setData({
             selindex: t,
             Teamlist: []
-        }), this.CommissionList(), this.CommissionCount();
+        }), Promise.all([ this.CommissionList(), this.CommissionCount() ]).then(function(a) {});
     },
     onReady: function() {},
     onShow: function() {

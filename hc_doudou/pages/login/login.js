@@ -41,14 +41,15 @@ Page({
                 }), wx.setNavigationBarTitle({
                     title: a.basic.title
                 }), app.globalData.sys = a, noexamine = 0 == a.stake ? !(examine = !1) : !(examine = !0), 
-                0 == a.basic.video_status ? (t.videoContext = wx.createVideoContext("myVideo"), 
-                t.videoContext.play(), videoPlay = !1) : wx.reLaunch({
+                0 == a.basic.video_status && a.basic.video ? (t.videoContext = wx.createVideoContext("myVideo"), 
+                t.videoContext.play(), i.setData({
+                    videoPlay: !1
+                })) : wx.reLaunch({
                     url: "../index/index"
                 }), i.setData({
                     sys: a,
                     examine: examine,
-                    noexamine: noexamine,
-                    videoPlay: videoPlay
+                    noexamine: noexamine
                 });
             }
         });
