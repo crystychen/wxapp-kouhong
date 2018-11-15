@@ -2,6 +2,7 @@
     "pages": [
         "hc_doudou/pages/login/login",
         "hc_doudou/pages/my/my",
+        "hc_doudou/pages/my/qrcode/qrcode",
         "hc_doudou/pages/detail/detail",
         "hc_doudou/pages/index/index",
         "hc_doudou/pages/my/order/order",
@@ -13,5 +14,8 @@
         "hc_doudou/pages/my/distribution/detail",
         "hc_doudou/pages/test/test",
         "hc_doudou/pages/try/try"
-    ]
+    ],
+    "window": {
+        "requiredBackgroundModes": true
+    }
 }

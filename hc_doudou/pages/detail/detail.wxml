@@ -4,7 +4,7 @@
     </swiper-item>
 </swiper>
 <view class="" hover-class="none" hover-stop-propagation="false">
-  
+   
 </view>
 <view class="goods">
     <view class="between" wx:if="{{system!='iOS'}}">
